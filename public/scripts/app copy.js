@@ -1,9 +1,5 @@
-import getRdmMovieQuote from './data/movie-quotes.js'
-import { OPEN_WEATHER_API_KEY, GOOGLE_API_KEY } from './api-keys.js';
 
-const initApp = () => {
-  
-  //*variable declarations:
+//*variable declarations:
   const PLACES_API_ENDPOINT = "/api/places/"
   const OPEN_WEATHER_API_ENDPOINT = "https://api.openweathermap.org/data/2.5/onecall?"
 
@@ -83,7 +79,7 @@ const initApp = () => {
     weatherCards.innerHTML = html;
   };
   
-  const fetchWeather = (lat, lon, locationName) => {
+  const fetchWeather = (lat, lon, locationName = "LOCATION NAME") => {
     const units = "imperial";
     const url = `${OPEN_WEATHER_API_ENDPOINT}lat=${lat}&lon=${lon}&units=${units}&lang=en&appid=${OPEN_WEATHER_API_KEY}`;
     fetch(url)
@@ -168,7 +164,6 @@ const initApp = () => {
   // searchBox.focus();
 
 
-}
 
 // document.addEventListener('DOMContentLoaded', initApp);
 initApp();
