@@ -13,7 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         body: JSON.stringify({lat, lon})
       };
-      fetch("/api", options);
+      fetch("/api", options)
+        .then(res => res.json())
+        .then(data => console.log(data))
     });
   } else {
     console.log("geolocation not available");
