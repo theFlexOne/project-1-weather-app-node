@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">    
+
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300;400;500;600;700&family=Titillium+Web:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <script src="app.js" type="module" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo" id="logo">
+        <img src="./Images/weather-app-logo.png" alt="weather app logo">
+      </div>
+      <!-- <div class="search-container"> -->
+        <form>
+          <label for="searchBox"></label>
+          <input type="search" name="Location Search" class="search-box" id="searchBox" placeholder="blahAHAHA">
+          <button type="submit" id="searchButton" class="search-button"><span class="material-icons-outlined">search</span></button>
+          <button type="button" id="userLocationButton" class="user-location-button"><span class="material-icons-outlined">my_location</span></button>
+        </form>
+      <!-- </div> -->
+      <nav>
+        <li><a href="https://dev.to/eric_havey">Blog</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">About</a></li>
+      </nav>
+    </header>
+
+    <main>
+      <div class="card card-overview">
+        <!-- <h1 class="card-title location"></h1>
+        <h3 class="card-text date"></h5>
+        <div class="image-and-temp-box">
+          <img src="#">
+          <span></span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title card-text"></h3>
+          <p class="card-text high-low-temp"></p>
+        </div> -->
+      </div>
+      <div class="card card-info">
+        <!-- <div class="card-body">
+          <p class="card-text high-low-feels"></p>
+          <p class="card-text"></p>
+          <p class="card-text"></p>
+          <p class="card-text"></p>
+          <p class="card-text"></p>
+        </div> -->
+      </div>
+      <div class="card card-three-day"></div>
+      <div class="card card-five-day"></div>
+      <div class="card card-other"></div>
+    </main>
+    <footer>
+      <h3 class="movie-quote" id="movieQuote"></h3>
+    </footer>
+
+
+
+    <!-- <script src="/api-keys.js"></script> -->
+  </body>
+</html>

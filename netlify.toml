@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/api/places/*"
+  to = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?:splat"
+  status = 200

@@ -1,0 +1,220 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-family-first: 'Titillium Web', sans-serif;
+  --font-family-second: 'Montserrat', sans-serif;
+  --font-family-third: 'Teko', sans-serif;
+
+  --frosted-background-color: rgba(56, 60, 77, 0.5);
+  --frosted-filter-blur: blur(4px);
+  --frosted-box-shadow: 
+        -4px 8px 15px -5px rgba(78, 78, 78, 0.6),
+        -9px 13px 20px -5px rgba(109, 103, 77, 0.6);
+  --frosted-border: .5px solid rgba(126, 126, 126, 0.7);
+}
+
+body {
+  background-image: url(../Images/night-sky-trees.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  font-family: var(--font-family-first);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+header,
+footer {
+  background-color: var(--frosted-background-color);
+  backdrop-filter: var(--frosted-filter-blur);
+  /* border: var(--frosted-border); */
+  /* box-shadow: var(--frosted-box-shadow); */
+  height: 10vh;
+  min-width: 100vw;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding-right: 1em;
+  padding-left: 1em;
+  min-height: 3.5rem;
+}
+
+header .logo {
+  height: 100%
+}
+
+
+header img {
+  height: 100%
+}
+
+header form {
+  width: 40%;
+  min-width: 332px;
+  display: flex;
+  gap: inherit;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  align-items: center;
+}
+
+/* header label {
+  height: 3rem;
+  width: 100%;
+} */
+
+header input[type="search"] {
+  padding-left: 1rem;
+  font-size: 1.2em;
+  font-family: inherit;
+  background-color: rgba(255, 255, 255, .70);
+  border-color: var(--frosted-border-color);
+  color: black;
+  font-weight: 500;
+  border-radius: 50px;
+  width: 100%;
+  flex-grow: 1;
+}
+
+header input[type="search"]:focus {
+  background-color: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 1);
+}
+
+.user-location-button, .search-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  min-width: 3rem;
+  border-radius: 50%;
+  padding: .25rem;
+  background-color: rgb(26, 26, 26);
+  color: rgba(255, 255, 255, .70);
+  border-color: var(--frosted-border-color);
+  cursor: pointer;
+}
+
+.user-location-button:hover, .search-button:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+nav li {
+  display: inline;
+  padding-left: 1em;
+}
+
+nav a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, .70);
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: rgba(255, 255, 255, 1);
+}
+
+main {
+  /* margin: 2rem 0; */
+  color: rgba(255, 255, 255, .70);
+  display: grid;
+  min-height: 75vh;
+  width: min(100%, 910px);
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 5% 2.5%;
+  padding: 2vw;
+}
+
+main > * {
+  background-color: var(--frosted-background-color);
+  backdrop-filter: var(--frosted-filter-blur);
+  border: var(--frosted-border);
+  border-radius: 5px;
+  grid-column-end: span 4;
+  box-shadow: var(--frosted-box-shadow);
+  max-height: 100%;
+}
+
+.card-overview {
+  grid-column-end: span 8;
+  display: flex;
+  flex-grow: 1;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  font-family: var(--font-family-second);
+  font-weight: 100;
+  /* gap: 1rem; */
+}
+
+.card-overview > * {
+  min-width: fit-content;
+  /* max-width: 100%; */
+}
+
+.location-and-date {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.location-and-date > * {
+  width: max-content;
+}
+
+.date :first-child {
+  color: red;
+}
+
+.image-and-temp {
+  margin: auto 0;
+}
+
+.image-and-temp img {
+  object-fit: none;
+  height: 100px;
+  width: 100px;
+}
+
+.card-overview :last-child {
+}
+
+/* 
+.image-temp-row {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.image-temp-row img {
+  height: 150px;
+  width: 150px;
+}
+
+.image-temp-row > span {
+  font-size: 3rem;
+} */
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, .70);
+  font-family: var(--font-family-first);
+  font-weight: 200;
+}
