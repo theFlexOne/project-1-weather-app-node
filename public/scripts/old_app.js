@@ -82,7 +82,6 @@ const initApp = () => {
     `;
     weatherCards.innerHTML = html;
   };
-  
   const fetchWeather = (lat, lon, locationName = "LOCATION NAME") => {
     const units = "imperial";
     const url = `${OPEN_WEATHER_API_ENDPOINT}lat=${lat}&lon=${lon}&units=${units}&lang=en&appid=${OPEN_WEATHER_API_KEY}`;
