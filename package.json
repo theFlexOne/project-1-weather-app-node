@@ -19,6 +19,7 @@
   "homepage": "https://github.com/theFlexOne/project-1-weather-app-node#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "netlify-cli": "^6.14.0"
+    "netlify-cli": "^6.14.0",
+    "node-fetch": "^2.6.5"
   }
 }
