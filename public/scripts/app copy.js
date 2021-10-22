@@ -114,10 +114,9 @@
       .catch(error => console.error(error));
   };
 
-  const fetchUserLocationName = (lat, lon) => {
+  const fetchUserLocationName = async (lat, lon) => {
     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=44.805331745443546,-95.53558784405938&key=${GOOGLE_API_KEY}`
-    fetch(url)
-      .then(res => {
+    const data = await (await fetch(url)).json();
         if (!res.ok) throw new Error(res.statusText);
         return res.json();
       })

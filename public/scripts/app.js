@@ -3,20 +3,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   if ("geolocation" in navigator) {
     console.log("geolocation available");
-    navigator.geolocation.getCurrentPosition(({ coords }) => {
+    navigator.geolocation.getCurrentPosition(async ({ coords }) => {
       const { latitude: lat, longitude: lon } = coords;
       console.log(lat, lon);
       const options = {
-        method: 'POST',
+        method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({lat, lon})
+        body: JSON.stringify({ lat, lon }),
       };
-      fetch("/api", options)
-        .then(res => res.json())
-        .then(data => displayWeather(data))
-        .catch(err => console.error(err))
+      const data = await (await fetch("/api", options)).json();
+      displayWeather(data);
     });
   } else {
     console.log("geolocation not available");
@@ -32,9 +30,9 @@ const displayWeather = ({ weatherData }) => {
     sunset = new Date(today.sunset * 1000);
 
   // need the individual date pieces for styling as spans
-  const {weekday, month, dayNum, year} = (() => {
-    const [weekday, month, dayNum, year] = new Date().toDateString().split(' ');
-    return {weekday, month, dayNum, year} 
+  const { weekday, month, dayNum, year } = (() => {
+    const [weekday, month, dayNum, year] = new Date().toDateString().split(" ");
+    return { weekday, month, dayNum, year };
   })();
 
   const html = `
@@ -48,17 +46,13 @@ const displayWeather = ({ weatherData }) => {
     </div>
     <div class="image-and-temp">
       <img
-        src="http://openweathermap.org/img/wn/${
-          current.weather[0].icon
-        }@4x.png"
+        src="http://openweathermap.org/img/wn/${current.weather[0].icon}@4x.png"
         class="card-img"
         alt="Weather description"
         title="${current.weather[0].description}"
       />
       <span>
-        ${Math.round(
-          current.temp
-        )}°<span class="degree-units-system">F</span>
+        ${Math.round(current.temp)}°<span class="degree-units-system">F</span>
       </span>
     </div>
   </div>  
