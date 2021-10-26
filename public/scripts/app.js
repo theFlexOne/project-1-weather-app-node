@@ -1,6 +1,18 @@
-// import { fetchWeather } from "./fetchWeather.js"
+const searchForm = document.querySelector('header form');
+const searchBox = document.querySelector('#searchBox');
+const userLocationButton = document.querySelector('#userLocationButton');
+
 
 document.addEventListener("DOMContentLoaded", () => {
+  sendUsersLatLon();
+
+  searchForm.addEventListener('submit', fetchInputLocationData);
+  userLocationButton.addEventListener('click',sendUsersLatLon);
+
+
+});
+
+const sendUsersLatLon = () => {
   if ("geolocation" in navigator) {
     console.log("geolocation available");
     navigator.geolocation.getCurrentPosition(async ({ coords }) => {
@@ -13,13 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         body: JSON.stringify({ lat, lon }),
       };
-      const data = await (await fetch("/api", options)).json();
+      const data = await (await fetch("/api/weather", options)).json();
       displayWeather(data);
     });
   } else {
     console.log("geolocation not available");
   }
-});
+
+}
 
 const displayWeather = ({ weatherData }) => {
   console.log({ weatherData });
@@ -81,3 +94,17 @@ const displayWeather = ({ weatherData }) => {
   `;
   weatherCards.innerHTML = html;
 };
+
+const fetchInputLocationData = async (e) => {
+  e.preventDefault();
+  const location = searchBox.value;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({location}),
+  };
+  const data = await (await fetch("/api/location", options)).json()
+  console.log(data);
+}
