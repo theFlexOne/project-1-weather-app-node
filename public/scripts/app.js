@@ -106,5 +106,5 @@ const fetchInputLocationData = async (e) => {
     body: JSON.stringify({location}),
   };
   const data = await (await fetch("/api/location", options)).json()
-  console.log(data);
+  displayWeather(data);
 }

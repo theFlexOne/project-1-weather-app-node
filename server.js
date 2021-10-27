@@ -9,31 +9,23 @@ const OPEN_WEATHER_API_ENDPOINT = 'https://api.openweathermap.org/data/2.5/oneca
 const PLACES_API_ENDPOINT = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
 
 
-app.listen(3000, (req, res) => console.log("Up at localhost:3000"));
 app.use(express.static("public"));
 app.use(express.json());
+app.listen(3000, (req, res) => console.log("Up at localhost:3000"));
 
 app.post("/api/weather", async (req, res) => {
   console.log("Request received");
   const { lat, lon } = req.body;
-  const weatherData = await fetchWeather(lat, lon);
-  // const location = 
-  console.log("Returning the weather");
-  res.json({
-    status: "success",
-    weatherData
+  const weatherData = fetchWeather(lat, lon)
+  returnWeatherData(res, lat, lon);  
   });
-});
 
 app.post("/api/location", async (req, res) => {
   console.log("Request received");
   const locationInput = req.body.location;
-  const locationData = await fetchLocation(locationInput);
-  res.json({
-    status: "success",
-    locationData
-  });
-
+  const locationData = (await fetchLocation(locationInput)).candidates[0];
+  const {lat, lng: lon} = (locationData.geometry.location);
+  returnWeatherData(res, lat, lon);  
 })
 
 // app.post("/temp", (req, res) => {
@@ -60,9 +52,19 @@ const fetchWeather = async (lat, lon) => {
 
 const fetchLocation = async (input) => {
   console.log("Fetching user location");
-  const url = `${PLACES_API_ENDPOINT}input=${input}&fields=name,geometry,place_id&inputtype=textquery&key=${GOOGLE_API_KEY}`;
+  const url = `${PLACES_API_ENDPOINT}input=${input}&fields=name,geometry,&inputtype=textquery&key=${GOOGLE_API_KEY}`;
   const data = await (await fetch(url)).json();
-  console.log(data);
   return data;
 
 }
+
+const returnWeatherData = async (res, lat, lon) => {
+  const weatherData = await fetchWeather(lat, lon);
+  // const location = 
+  console.log("Returning the weather");
+  res.json({
+    status: "success",
+    weatherData
+  });
+
+} 
