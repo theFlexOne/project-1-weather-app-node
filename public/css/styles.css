@@ -9,12 +9,15 @@
   --font-family-second: 'Montserrat', sans-serif;
   --font-family-third: 'Teko', sans-serif;
 
-  --frosted-background-color: rgba(56, 60, 77, 0.5);
+  --color-primary: rgb(56, 60, 77);
+
+  --frosted-background-color: rgba(35, 41, 49, .6);
   --frosted-filter-blur: blur(4px);
   --frosted-box-shadow: 
         -4px 8px 15px -5px rgba(78, 78, 78, 0.6),
         -9px 13px 20px -5px rgba(109, 103, 77, 0.6);
   --frosted-border: .5px solid rgba(126, 126, 126, 0.7);
+  --frosted-border-highlight: .5px solid rgba(126, 126, 126, 1);
 }
 
 body {
@@ -75,8 +78,8 @@ header form {
 } */
 
 header input[type="search"] {
-  padding-left: 1rem;
-  font-size: 1.2em;
+  padding: .25rem 1.5rem;
+  font-size: 1rem;
   font-family: inherit;
   background-color: rgba(255, 255, 255, .70);
   border-color: var(--frosted-border-color);
@@ -96,26 +99,26 @@ header input[type="search"]:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 3rem;
-  min-width: 3rem;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
   border-radius: 50%;
   padding: .25rem;
-  background-color: rgb(26, 26, 26);
+  background-color: rgb(48, 48, 48);
   color: rgba(255, 255, 255, .70);
-  border-color: var(--frosted-border-color);
+  border: var(--frosted-border);
   cursor: pointer;
 }
 
 .user-location-button:hover, .search-button:hover {
   color: rgba(255, 255, 255, 1);
-}
+  border-color: rgba(126, 126, 126, 1);
 
-nav li {
-  display: inline;
-  padding-left: 1em;
 }
 
 nav a {
+  display: inline;
+  padding-left: 1em;
+  font-family: var(--font-family-second);
   text-decoration: none;
   color: rgba(255, 255, 255, .70);
 }
@@ -147,7 +150,7 @@ main > * {
   max-height: 100%;
 }
 
-.card-overview {
+.overview {
   grid-column-end: span 8;
   display: flex;
   flex-grow: 1;
@@ -158,38 +161,68 @@ main > * {
   /* gap: 1rem; */
 }
 
-.card-overview > * {
-  min-width: fit-content;
-  /* max-width: 100%; */
+.overview > * {
+  flex-grow: 1;
 }
 
 .location-and-date {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-around;
-
+  justify-content: space-between;
+  align-items: center;
+  width: 33%;
+  margin: 1rem;
 }
 
-.location-and-date > * {
-  width: max-content;
+.location {
+  max-width: 70%;
 }
 
-.date :first-child {
-  color: red;
+.location .city {
+  font-size: 2.25rem;
+  font-weight: 200;
 }
 
-.image-and-temp {
-  margin: auto 0;
+.location .state {
+  font-size: 1.25rem;
+  font-weight: 200;
 }
 
-.image-and-temp img {
-  object-fit: none;
-  height: 100px;
-  width: 100px;
+.date {
+  font-size: 1.15rem;
+  text-align: left;
 }
 
-.card-overview :last-child {
+.date .weekday {
+  font-size: 1.75rem;
+  font-weight: bolder;
+  color: rgb(132, 155, 32);
+}
+
+.date:last-child {
+  font-weight: 200;
+}
+
+.overview .weather {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.overview .image-wrapper {
+  width: 200px;
+  align-self: flex-start;
+  
+}
+
+.overview .temp {
+  align-self: flex-end;
+  font-size: 3.5rem;
+}
+
+.temp .units {
+  font-size: 1.5rem;
 }
 
 /* 
