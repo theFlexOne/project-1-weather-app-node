@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
 const fetch = require("node-fetch");
+require('dotenv').config();
 
-const OPEN_WEATHER_API_KEY = '37fc3c7b9cfbdc5c99764ee1486ef34d'
-const GOOGLE_API_KEY = "AIzaSyCMNhm78jy8Z_PGj1nAKmWPfICcULLsWRA";
+
+const OPEN_WEATHER_API_KEY = process.env.OPEN_WEATHER_API_KEY;
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
 const OPEN_WEATHER_API_ENDPOINT = 'https://api.openweathermap.org/data/2.5/onecall?'
 const PLACES_API_ENDPOINT = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
