@@ -107,3 +107,5 @@ dist
 api-keys.js
 scrap code
 .vscode
+# Local Netlify folder
+.netlify
