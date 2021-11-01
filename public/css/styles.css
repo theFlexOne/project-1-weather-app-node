@@ -172,7 +172,7 @@ main > * {
   justify-content: space-between;
   align-items: center;
   width: 33%;
-  margin: 1rem;
+  margin: .5rem;
 }
 
 .location {
@@ -197,7 +197,7 @@ main > * {
 .date .weekday {
   font-size: 1.75rem;
   font-weight: bolder;
-  color: rgb(132, 155, 32);
+  color: rgb(134, 51, 18);
 }
 
 .date:last-child {
@@ -207,18 +207,27 @@ main > * {
 .overview .weather {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
+  margin-bottom: .75rem;
+  justify-content: space-between;
 }
 
 .overview .image-wrapper {
-  width: 200px;
+  max-height: 120px;
+  max-width: 120px;
+  display: flex;
   align-self: flex-start;
-  
+}
+
+.image-wrapper img {
+  height: 100%;
+  object-fit: none;
 }
 
 .overview .temp {
   align-self: flex-end;
-  font-size: 3.5rem;
+  font-size: 4rem;
 }
 
 .temp .units {
